@@ -1,67 +1,62 @@
 {
   "meta": {
     "name": "Locked-GNO-Snapshot",
-    "user": "bh2smith"
+    "user": "bh2smith",
+    "query_path": "./src/queries/"
   },
   "queries": [
     {
-      "id": 426482,
-      "name": "Grand Total Locked GNO",
-      "query_file": "./src/queries/total-locked.sql",
-      "network": "mainnet"
-    },
-    {
       "id": 426400,
       "name": "Total GNO Locked (Mainnet)",
-      "query_file": "./src/queries/mainnet-total-locked.sql",
+      "query_file": "mainnet-total-locked.sql",
       "network": "mainnet"
     },
     {
       "id": 426534,
       "name": "Total GNO Locked (Gchain)",
-      "query_file": "./src/queries/gchain-total-locked.sql",
+      "query_file": "gchain-total-locked.sql",
       "network": "gchain"
     },
     {
       "id": 426435,
       "name": "Total LGNO (Gchain)",
-      "query_file": "./src/queries/gchain-total-lgno.sql",
+      "query_file": "gchain-total-lgno.sql",
       "network": "gchain"
     },
     {
       "id": 426417,
       "name": "GNO Locked as raw mGNO balances",
-      "query_file": "./src/queries/gchain-unstaked-mgno.sql",
+      "query_file": "gchain-unstaked-mgno.sql",
       "network": "gchain"
     },
     {
       "id": 426563,
       "name": "GNO Locked in Staking Contract",
-      "query_file": "./src/queries/gchain-staked-mgno.sql",
+      "query_file": "gchain-staked-mgno.sql",
       "network": "gchain"
     },
     {
       "id": 426273,
       "name": "Locked GNO Holders (Mainnet)",
-      "query_file": "./src/queries/mainnet-lgno-holders.sql",
+      "query_file": "mainnet-lgno-holders.sql",
       "network": "mainnet"
     },
     {
       "id": 426272,
       "name": "Locked GNO Holders (Gnosis Chain)",
-      "query_file": "./src/queries/gchain-lgno-holders.sql",
+      "query_file": "gchain-lgno-holders.sql",
       "network": "gchain"
     },
     {
       "id": 426350,
       "name": "Raw mGNO Holders (TokenLock Snapshot)",
-      "query_file": "./src/queries/gchain-raw-mgno-holders.sql",
+      "query_file": "gchain-raw-mgno-holders.sql",
       "network": "gchain"
     },
     {
       "id": 426384,
       "name": "GNO Stakers (TokenLock Snapshot)",
-      "query_file": "./src/queries/gchain-gno-stakers.sql",
+      "query_file": "gchain-gno-stakers.sql",
       "network": "gchain"
     }
   ]
