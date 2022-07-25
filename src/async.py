@@ -2,7 +2,6 @@ import time
 from dotenv import load_dotenv
 from duneapi.api import DuneAPI
 from duneapi.types import DuneRecord, DuneQuery, QueryResults
-from duneapi.response import pre_validate_response
 
 
 def try_get_results(dune: DuneAPI, job_id: str) -> list[DuneRecord] | None:
@@ -10,7 +9,6 @@ def try_get_results(dune: DuneAPI, job_id: str) -> list[DuneRecord] | None:
     queue_position = dune.post_dune_request(queue_position_post)
     if queue_position.json()["data"]["jobs_by_pk"] is not None:
         print(f"Job ID {job_id} not ready yet!")
-        print(queue_position.json())
         time.sleep(1)
         return None
 
@@ -21,10 +19,13 @@ def try_get_results(dune: DuneAPI, job_id: str) -> list[DuneRecord] | None:
 def mock_async_fetch(dune: DuneAPI, query_ids: list[int]) -> list[DuneRecord]:
     query_job_map = {}
     job_ids = []
+    print(f"Executing queries {query_ids}")
     for q_id in query_ids:
         j_id = dune.execute(q_id)
         query_job_map[q_id] = j_id
         job_ids.append(j_id)
+
+    print(f"Corresponding job IDs for pending query execution {query_job_map}")
     results = {}
     while job_ids:
         # Round robin check for query results.
@@ -41,9 +42,9 @@ def mock_async_fetch(dune: DuneAPI, query_ids: list[int]) -> list[DuneRecord]:
 
 if __name__ == "__main__":
     load_dotenv()
-    block_count_id = 1102138
-    tx_count_id = 1102144
+    block_count_id = 1102138  # select count(*) from ethereum.blocks
+    tx_count_id = 1102144  # select count(*) from ethereum.transactions
     results = mock_async_fetch(
         DuneAPI.new_from_environment(), [block_count_id, tx_count_id]
     )
-    print(results)
+    print("Results", results)
